@@ -7,6 +7,10 @@
 	{
 	  "type": "shell",
 	  "script": "scripts/install_extras.sh"
+	},
+	{
+	  "type": "shell",
+	  "script": "scripts/install_additions.sh"
 	}],
 	"builders" : [{
 	"vm_name": "centos7-node-dev",
@@ -28,29 +32,12 @@
 	"boot_command": [
 		"<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
 	],
-	"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+	"guest_additions_path": "VBoxGuestAdditions.iso",
 	"virtualbox_version_file": ".vbox_version",
 	"shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
 	"vboxmanage": [
 			["modifyvm", "{{.Name}}", "--usb", "off"],
 			["modifyvm", "{{.Name}}", "--audio", "none"]
 		]
-  }],
-  "post-processors" : [[
-		{
-			"type": "vagrant",
-			"keep_input_artifact": false
-		},
-		{
-			"type" : "atlas",
-			"only": ["virtualbox-iso"],
-			"artifact": "joshholl/centos7-node-dev",
-			"artifact_type" : "vagrant.box",
-			"metadata" : {
-				"provider": "virtualbox",
-				"version" : "{{ user `version` }}",
-				"ceated_at":"{{timestamp}}"
-			}
-	  }
-  ]]
+  }]
 }
