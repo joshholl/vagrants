@@ -32,7 +32,6 @@
 	"virtualbox_version_file": ".vbox_version",
 	"shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
 	"vboxmanage": [
-			["modifyvm", "{{.Name}}", "--memory", "8192"],
 			["modifyvm", "{{.Name}}", "--usb", "off"],
 			["modifyvm", "{{.Name}}", "--audio", "none"]
 		]
