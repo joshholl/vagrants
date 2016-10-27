@@ -1,13 +1,13 @@
 {
 	"provisioners": [{
-      "type": "file",
-      "source" : "extras",
+	  "type": "file",
+	  "source" : "extras",
 	  "destination" : "/tmp"
-    },
+	},
 	{
-      "type": "shell",
-      "script": "scripts/install_extras.sh"
-    }],
+	  "type": "shell",
+	  "script": "scripts/install_extras.sh"
+	}],
 	"builders" : [{
 	"vm_name": "centos7-node-dev",
 	"type" : "virtualbox-iso",
@@ -36,18 +36,18 @@
 			["modifyvm", "{{.Name}}", "--audio", "none"]
 		]
   }],
-  "post-processors" : [ 
-      {
-        "type" : "atlas",
-        "only": ["virtualbox-iso"],
-        "artifact": "joshholl/centos7-node-dev",
-        "artifact_type" : "vagrant.box",
-        "metadata" : {
-          "provider": "vagrant.box",
-          "version" : "{{ user `version` }}",
-          "ceated_at":"{{timestamp}}"
-        }
-        
-      }
-  ]
+  "post-processors" : [[
+	  {
+		"type" : "atlas",
+		"only": ["virtualbox-iso"],
+		"artifact": "joshholl/centos7-node-dev",
+		"artifact_type" : "vagrant.box",
+		"metadata" : {
+		  "provider": "vagrant.box",
+		  "version" : "{{ user `version` }}",
+		  "ceated_at":"{{timestamp}}"
+		}
+		
+	  }
+  ]]
 }
