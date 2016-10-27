@@ -35,5 +35,19 @@
 			["modifyvm", "{{.Name}}", "--usb", "off"],
 			["modifyvm", "{{.Name}}", "--audio", "none"]
 		]
-  }]
+  }],
+  "post-processors" : [ 
+      {
+        "type" : "atlas",
+        "only": ["virtualbox-iso"],
+        "artifact": "joshholl/centos7-node-dev",
+        "artifact_type" : "vagrant.box",
+        "metadata" : {
+          "provider": "vagrant.box",
+          "version" : "{{ user `version` }}",
+          "ceated_at":"{{timestamp}}"
+        }
+        
+      }
+  ]
 }
