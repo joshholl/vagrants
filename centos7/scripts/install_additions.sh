@@ -12,6 +12,7 @@ sudo mkdir /tmp/isomount
 sudo mount -t iso9660 -o loop /tmp/VBoxGuestAdditions.iso /tmp/isomount
 
 # Install the drivers
+export KERN_SRC=/usr/src/kernels/$(uname -r)
 sudo /tmp/isomount/VBoxLinuxAdditions.run
 
 # Cleanup
