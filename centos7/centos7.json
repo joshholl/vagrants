@@ -40,16 +40,20 @@
     ]
   }],
   "post-processors" : [[
-    {
-      "type" : "atlas",
-      "only": ["virtualbox-iso"],
-      "artifact": "joshholl/centos7-node-dev",
-      "artifact_type" : "vagrant.box",
-      "metadata" : {
-        "provider": "virtualbox",
-        "version" : "{{ user `version` }}",
-        "ceated_at":"{{timestamp}}"
-      }
-    }
-  ]]
+ 		{
+ 			"type": "vagrant",
+ 			"keep_input_artifact": false
+ 		},
+ 		{
+ 			"type" : "atlas",
+ 			"only": ["virtualbox-iso"],
+ 			"artifact": "joshholl/centos7-node-dev",
+ 			"artifact_type" : "vagrant.box",
+ 			"metadata" : {
+ 				"provider": "virtualbox",
+ 				"version" : "{{ user `version` }}",
+ 				"ceated_at":"{{timestamp}}"
+ 			}
+ 	  }
+   ]]
 }
