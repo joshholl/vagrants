@@ -42,7 +42,20 @@ then
 fi
 
 
-sudo taz zxf ideaIU-2016.2.5.tar.gz -C /opt/intellij
+sudo tar zxf ideaIU-2016.2.5.tar.gz -C /opt/intellij
+
+if [ ! -f /usr/share/applications]
+then 
+cat <<-EOF > /usr/share/applications/intellij.desktop
+	#!/usr/bin/env xdg-open
+	[Desktop Entry]
+	Name=Intellij IDEA
+	EXEC="/opt/intellij/idea-IU-162.2228.15/bin/idea.sh" %f
+	ICON=/opt/intellij/idea-IU-162.2228.15/bin/idea.png
+	Categoris=Development;IDE;
+	EOF
+fi	
+
 sudo rpm -ivh $EXTRAS/jdk-8u111-linux-x64.rpm
 sudo rpm -ivh $EXTRAS/slack-2.2.1-0.1.fc21.x86_64.rpm
 sudo rpm -ivh $EXTRAS/oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm
